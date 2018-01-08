@@ -4,7 +4,7 @@
 int downTemperature;
 int cleaning;
 
-void Relay::initialize(int _downTemperature, int _cleaning)
+Relay::Relay(int _downTemperature, int _cleaning)
 {
 	downTemperature = _downTemperature;
 	cleaning = _cleaning;
