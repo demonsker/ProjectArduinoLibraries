@@ -4,10 +4,13 @@
 int downTemperature;
 int cleaning;
 
-void Relay::initialize(int downTemperature, int cleaning)
+void Relay::initialize(int _downTemperature, int _cleaning)
 {
-  pinMode(downTemperature, OUTPUT);
-  pinMode(cleaning, OUTPUT);
+	downTemperature = _downTemperature;
+	cleaning = _cleaning;
+
+	pinMode(downTemperature, OUTPUT);
+	pinMode(cleaning, OUTPUT);
 }
 
 void Relay::startDownTemperature()
