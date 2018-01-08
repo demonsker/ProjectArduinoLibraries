@@ -1,7 +1,7 @@
 class Relay
 {
 	public :	
-			void initialize(int, int);
+			Relay(int _downTemperature, int _cleaning);
 			void startDownTemperature();
 			void startCleaning();
 			void stopTemperature();
