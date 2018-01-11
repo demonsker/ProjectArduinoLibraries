@@ -6,8 +6,8 @@ int ECHO_PIN;
 
 UltraSonic::UltraSonic(int pin1, int pin2)
 {
-  TRIGGER_PIN = pin1;
-  ECHO_PIN = pin2;
+  ECHO_PIN = pin1;
+  TRIGGER_PIN = pin2;
   pinMode(TRIGGER_PIN, OUTPUT);
   pinMode(ECHO_PIN, INPUT);
 }
