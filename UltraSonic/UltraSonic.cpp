@@ -1,4 +1,5 @@
 #include <Arduino.h>
+#include "UltraSonic.h"
 
 int TRIGGER_PIN;
 int ECHO_PIN; 
