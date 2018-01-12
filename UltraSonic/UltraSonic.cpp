@@ -1,8 +1,8 @@
 #include <Arduino.h>
 #include "UltraSonic.h"
 
+int ECHO_PIN;
 int TRIGGER_PIN;
-int ECHO_PIN; 
 
 UltraSonic::UltraSonic(int pin1, int pin2)
 {
