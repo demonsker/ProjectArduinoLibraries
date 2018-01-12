@@ -10,7 +10,9 @@ Relay::Relay(int _downTemperature, int _cleaning)
 	cleaning = _cleaning;
 
 	pinMode(downTemperature, OUTPUT);
-	pinMode(cleaning, OUTPUT);
+  pinMode(cleaning, OUTPUT);
+  
+  stopAllPin();
 }
 
 void Relay::startDownTemperature()
