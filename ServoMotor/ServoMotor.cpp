@@ -22,3 +22,8 @@ void ServoMotor::startLiftDown()
   servo1.write(0); 
   servo2.write(0);
 }
+
+void ServoMotor::ChangeDegree(int degree)
+{
+  servo1.write(degree);
+}
