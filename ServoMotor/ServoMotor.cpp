@@ -27,3 +27,27 @@ void ServoMotor::ChangeDegree(int degree)
 {
   servo1.write(degree);
 }
+
+void ServoMotor::openFood(int servo)
+{
+  if(servo == 1)
+  {
+    servo1.write(180);
+  }
+  else if(servo == 2)
+  {
+    servo2.write(180);
+  }
+}
+
+void ServoMotor::closeFood(int servo)
+{
+  if(servo == 1)
+  {
+    servo1.write(0);
+  }
+  else if(servo == 2)
+  {
+    servo2.write(0);
+  }
+}

@@ -5,4 +5,6 @@ class ServoMotor
 			void startLiftUp();
 			void startLiftDown();
 			void ChangeDegree(int degree);
+			void openFood(int servo);
+			void closeFood(int servo);
 };
