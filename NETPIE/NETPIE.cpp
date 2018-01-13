@@ -2,13 +2,13 @@
 #include <ESP8266WiFi.h>
 #include "NETPIE.h"
 
-const char* ssid     = "Your ASUS";
-const char* password = "0874847756";
+const char* ssid;
+const char* password;
 
-char* APPID  = "HappyPigsty";
-char* KEY    = "zw0HnvDcL9VY4qA";
-char* SECRET = "BDiOw4Twn98leHH6ATHDkV7fD";
-char* ALIAS  = "TestBoard";
+char* APPID;
+char* KEY;
+char* SECRET;
+char* ALIAS;
 
 WiFiClient client;
 
@@ -34,13 +34,28 @@ void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
     microgear.setAlias(ALIAS);
 }
 
-NETPIE::NETPIE()
+NETPIE::NETPIE(char* _APPID, char* _KEY, char* _SECRET)
 {
     Serial.begin(115200);
     
-      microgear.on(PRESENT,onFoundgear);   
-      microgear.on(ABSENT,onLostgear);   
-      microgear.on(CONNECTED,onConnected);
+    APPID =  _APPID;
+    KEY = _KEY;
+    SECRET = _SECRET;
+
+    microgear.on(PRESENT,onFoundgear);   
+    microgear.on(ABSENT,onLostgear);   
+    microgear.on(CONNECTED,onConnected);
+}
+
+void NETPIE::setAlias(char* alias)
+{
+    ALIAS = alias;
+}
+
+void NETPIE::setWIFI(char* _ssid, char* _pwd)
+{
+    ssid = _ssid;
+    password = _pwd;
 }
 
 MicroGear NETPIE::getMicrogear()
@@ -72,5 +87,9 @@ void NETPIE::connect()
 
 void NETPIE::loopConnect()
 {
+    if(!microgear.connected())
+    {
+        Serial.println("connection lost, reconnect...");
+    }
     microgear.loop();
 }
