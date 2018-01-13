@@ -1,3 +1,4 @@
+#include <MicroGear.h>
 class NETPIE
 {
 	public :	
@@ -6,4 +7,5 @@ class NETPIE
             void connectWIFI();
             void connect();
             void loopConnect();
+            MicroGear getMicrogear();
 };

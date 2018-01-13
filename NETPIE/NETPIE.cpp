@@ -1,6 +1,5 @@
 #include <Arduino.h>
 #include <ESP8266WiFi.h>
-#include <MicroGear.h>
 #include "NETPIE.h"
 
 const char* ssid     = "Your ASUS";
@@ -19,12 +18,6 @@ MicroGear microgear(client);
 NETPIE::NETPIE()
 {
 
-}
-
-void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Incoming message --> ");
-    msg[msglen] = '\0';
-    Serial.println((char *)msg);
 }
 
 void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
@@ -49,13 +42,15 @@ void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
 void NETPIE::initialize()
 {
     Serial.begin(115200);
-
-    microgear.on(MESSAGE,onMsghandler);   
+  
     microgear.on(PRESENT,onFoundgear);   
     microgear.on(ABSENT,onLostgear);   
     microgear.on(CONNECTED,onConnected);
+}
 
-
+MicroGear NETPIE::getMicrogear()
+{
+    return microgear;
 }
 
 void NETPIE::connectWIFI()
