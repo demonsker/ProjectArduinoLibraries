@@ -21,6 +21,31 @@ NETPIE::NETPIE()
 
 }
 
+void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
+    Serial.print("Incoming message --> ");
+    msg[msglen] = '\0';
+    Serial.println((char *)msg);
+}
+
+void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
+    Serial.print("Found new member --> ");
+    for (int i=0; i<msglen; i++)
+        Serial.print((char)msg[i]);
+    Serial.println();  
+}
+
+void onLostgear(char *attribute, uint8_t* msg, unsigned int msglen) {
+    Serial.print("Lost member --> ");
+    for (int i=0; i<msglen; i++)
+        Serial.print((char)msg[i]);
+    Serial.println();
+}
+
+void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
+    Serial.println("Connected to NETPIE...");
+    microgear.setAlias(ALIAS);
+}
+
 void NETPIE::initialize()
 {
     Serial.begin(115200);
@@ -58,29 +83,4 @@ void NETPIE::connect()
 void NETPIE::loopConnect()
 {
     microgear.loop();
-}
-
-void onMsghandler(char *topic, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Incoming message --> ");
-    msg[msglen] = '\0';
-    Serial.println((char *)msg);
-}
-
-void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Found new member --> ");
-    for (int i=0; i<msglen; i++)
-        Serial.print((char)msg[i]);
-    Serial.println();  
-}
-
-void onLostgear(char *attribute, uint8_t* msg, unsigned int msglen) {
-    Serial.print("Lost member --> ");
-    for (int i=0; i<msglen; i++)
-        Serial.print((char)msg[i]);
-    Serial.println();
-}
-
-void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
-    Serial.println("Connected to NETPIE...");
-    microgear.setAlias(ALIAS);
 }
