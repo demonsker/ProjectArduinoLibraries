@@ -15,11 +15,6 @@ WiFiClient client;
 int timer = 0;
 MicroGear microgear(client);
 
-NETPIE::NETPIE()
-{
-
-}
-
 void onFoundgear(char *attribute, uint8_t* msg, unsigned int msglen) {
     Serial.print("Found new member --> ");
     for (int i=0; i<msglen; i++)
@@ -39,13 +34,13 @@ void onConnected(char *attribute, uint8_t* msg, unsigned int msglen) {
     microgear.setAlias(ALIAS);
 }
 
-void NETPIE::initialize()
+NETPIE::NETPIE()
 {
     Serial.begin(115200);
-  
-    microgear.on(PRESENT,onFoundgear);   
-    microgear.on(ABSENT,onLostgear);   
-    microgear.on(CONNECTED,onConnected);
+    
+      microgear.on(PRESENT,onFoundgear);   
+      microgear.on(ABSENT,onLostgear);   
+      microgear.on(CONNECTED,onConnected);
 }
 
 MicroGear NETPIE::getMicrogear()
