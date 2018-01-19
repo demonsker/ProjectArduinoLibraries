@@ -94,7 +94,7 @@ void NETPIE::loopConnect()
     microgear.loop();
 }
 
-void NETPIE::send(char* alias, char* message)
+void NETPIE::sendMessage(char* alias, char* message)
 {
     microgear.chat(alias, message);
 }

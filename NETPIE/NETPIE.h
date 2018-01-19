@@ -8,6 +8,6 @@ class NETPIE
             void loopConnect();
             void setAlias(char* alias);
             void setWIFI(char* _ssid, char* _pwd);
-            void send(char* alias, char* message);
+            void sendMessage(char* alias, char* message);
             MicroGear getMicrogear();           
 };
