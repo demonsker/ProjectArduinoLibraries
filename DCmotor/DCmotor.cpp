@@ -6,8 +6,12 @@ int motorA2;
 int motorB1;
 int motorB2;
 
+int speed;
+
 DCmotor::DCmotor(int _motorA1, int _motorA2, int _motorB1, int _motorB2)
 {
+  speed = 1023;
+ 
   motorA1 = _motorA1;
   motorA2 = _motorA2;
   motorB1 = _motorB1;
@@ -19,17 +23,22 @@ DCmotor::DCmotor(int _motorA1, int _motorA2, int _motorB1, int _motorB2)
   pinMode(motorB2,OUTPUT);
 }
 
+void DCmotor::setSpeed(int _speed)
+{
+  speed = _speed;
+}
+
 void DCmotor::startMotorA(int direction)
 {
   if(direction == 1)
     {
       digitalWrite(motorA2, 0);
-      digitalWrite(motorA1, 1); 
+      analogWrite(motorA1, speed); 
     }
   else 
     {
       digitalWrite(motorA1, 0);
-      digitalWrite(motorA2, 1);
+      analogWrite(motorA2, speed);
     }
 }
 
@@ -38,12 +47,12 @@ void DCmotor::startMotorB(int direction)
   if(direction == 1)
     {
       digitalWrite(motorB2, 0);
-      digitalWrite(motorB1, 1); 
+      analogWrite(motorB1, speed); 
     }
   else 
     {
       digitalWrite(motorB1, 0);
-      digitalWrite(motorB2, 1);
+      analogWrite(motorB2, speed);
     }
 }
 
