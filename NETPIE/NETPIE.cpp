@@ -98,3 +98,8 @@ void NETPIE::sendMessage(char* alias, char* message)
 {
     microgear.chat(alias, message);
 }
+
+void NETPIE::sendMessage(char* alias, float message)
+{
+    microgear.chat(alias, message);
+}

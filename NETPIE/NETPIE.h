@@ -9,5 +9,6 @@ class NETPIE
             void setAlias(char* alias);
             void setWIFI(char* _ssid, char* _pwd);
             void sendMessage(char* alias, char* message);
+            void sendMessage(char* alias, float message);
             MicroGear getMicrogear();           
 };
