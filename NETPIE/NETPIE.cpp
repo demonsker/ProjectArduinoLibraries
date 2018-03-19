@@ -90,6 +90,7 @@ void NETPIE::loopConnect()
     if(!microgear.connected())
     {
         Serial.println("connection lost, reconnect...");
+	microgear.connect(APPID);
     }
     microgear.loop();
 }
@@ -100,6 +101,11 @@ void NETPIE::sendMessage(char* alias, char* message)
 }
 
 void NETPIE::sendMessage(char* alias, float message)
+{
+    microgear.chat(alias, message);
+}
+
+void NETPIE::sendMessage(char* alias, String message)
 {
     microgear.chat(alias, message);
 }
